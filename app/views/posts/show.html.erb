@@ -1,2 +1,9 @@
-<h1>Title <%= @post.title %></h1>
-<p><%= @post.description %></p>
+<p class="pull-right">
+  [<%= link_to 'edit this post', edit_post_path(@post) %>]
+</p>
+
+<%= render 'shared/content_title', title: @post.title %>
+
+<p>
+  <%= @post.description %>
+</p>
