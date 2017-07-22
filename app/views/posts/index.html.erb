@@ -9,7 +9,9 @@
   </tr>
   <tr>
     <% @posts.each do |post| %>
-      <td><%= link_to post.title, post_path(post) %></td>
+      <td><%= link_to post.title, post_path(post) %>  <%= link_to '(edit)', edit_post_path(post) %></td>
   </tr>
   <% end %>
 </table>
+
+<h4><%= link_to 'Create new post', new_post_path %></h4>
