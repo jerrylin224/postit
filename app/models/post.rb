@@ -6,5 +6,5 @@ class Post < ActiveRecord::Base
 
   validates :title, presence: true, length: { minimum: 4 }
   validates :url, presence: true, uniqueness: true
-  validates :desctiption, presence: true
+  validates :description, presence: true
 end
