@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
-    @comment.creator = User.first
+    @comment.creator = User.first # Todo: Fix after authentication
     
     if @comment.save
       flash[:notice] = 'Comment has been created'

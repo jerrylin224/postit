@@ -18,6 +18,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.creator = User.first
 
     if @post.save
       flash[:notice] = "Post has been created"
@@ -38,7 +39,7 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:title, :description, :url)
+      params.require(:post).permit(:title, :description, :url, category_ids: [])
     end
 
     def set_post
