@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :show, :update, :vote]
-  before_action :require_user, except: [:show, :index]
+  before_action :require_user, except: [:show, :index, :vote]
 
   def index
     @posts = Post.all.sort_by { |x| x.total_votes }.reverse
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
     if @vote.valid?
       flash[:notice] = "Your vote was counted."
     else
-      flash[:notice] = "Your vote was not counted."
+      flash[:error] = "Your can only vote on a post once."
     end
 
     redirect_to :back
