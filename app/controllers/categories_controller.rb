@@ -10,15 +10,18 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category = Category.find_by slug: params[:id]
   end
 
   def create
     @category = Category.new(category_params)
 
-    if @category.save
+    if @category.already_exist?
+      flash[:error] = 'Category name has already been created before!'
+      redirect_to root_path 
+    elsif @category.save
       flash[:notice] = 'Category name has been saved!'
-      redirect_to root_path
+      redirect_to root_path 
     else
       render 'new'
     end
