@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :require_user, only: [:new, :create]
+  before_action :require_admin, only: [:new, :create]
 
   def index
     @categories = Category.all
@@ -14,10 +15,10 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
 
+    @category = Category.new(category_params)
     if @category.already_exist?
-      flash[:error] = 'Category name has already been created before!'
+      flash[:error] = 'Category name can\'t be duplicated'
       redirect_to root_path 
     elsif @category.save
       flash[:notice] = 'Category name has been saved!'
