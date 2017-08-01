@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
-    if !(logged_in? && current_user.admin?)
+    unless logged_in? && current_user.admin?
       access_denied
     end
   end

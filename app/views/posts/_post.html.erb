@@ -23,7 +23,6 @@
       <span class='quiet'>posted by </span><%= link_to post.creator.username, user_path(post.creator) %>
       <small>at <%= display_datetime(post.created_at) %></small>
     </p>
-    <small>at <%= post.created_at %></small>
     <span>
       <%= link_to("#{post.comments.size} comments", post_path(post)) %>
     </span>

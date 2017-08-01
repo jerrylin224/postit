@@ -19,6 +19,6 @@
     <br>
     <span class="quiet">by</span>
     <%= link_to comment.creator.username, user_path(comment.creator) %>
-    <small>at <%= comment.created_at %></small>
+    <small>at <%= display_datetime(comment.created_at) %></small>
   </div>
 </div>
