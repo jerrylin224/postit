@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       #   redirect_to pin_path
       # else
         login_user!(user)
-      end
+      # end
     else
       flash[:error] = "There is something wrong with your username or password"
       render 'new'
